@@ -2,8 +2,15 @@
 updateTimeTable();
 
 function updateTimeTable() {
+    $('table').find('tr').each(function(){
+        $(this).find('th').eq(2).after('<th>Exit (Estimate)</th>');
+    });
+    $('table').find('tr').each(function(){
+        $(this).find('td').eq(2).after('<td></td>');
+    });
+
     var elementsStartDay = $('table tr > td:nth-child(2), table tr > th:nth-child(2)');
-    var elementsEndDay = $('table tr > td:nth-child(3), table tr > th:nth-child(3)');
+    var elementsEndDayEstimate = $('table tr > td:nth-child(4), table tr > th:nth-child(4)');
 
     for(var i = 0; i < elementsStartDay.length; i++)
     {
@@ -14,9 +21,12 @@ function updateTimeTable() {
         endTime.setMinutes(parseInt(startTimeString.substr(4,5)));
         endTime.add({hours:8, minutes: 30});
 
+        var cellEnd = elementsEndDayEstimate[i];
+        cellEnd.style.background = cellStart.style.background;
         if(!isNaN(endTime) && startTimeString != null && startTimeString != "") {
-            var cellEnd = elementsEndDay[i];
-            cellEnd.innerHTML += "(" + endTime.toString("HH:mm") + ")";
+
+            cellEnd.innerHTML = endTime.toString("HH:mm");
+
         }
     }
 }
