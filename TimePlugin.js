@@ -53,7 +53,10 @@ function updateTimeTable() {
         var totalFullHours = Math.floor(totalFull);
         var totalMinutesRestDec = totalFull - totalFullHours;
         var totalMinutesRest = Math.floor(totalMinutesRestDec * 60);
-        return totalFullHours.toString() + ":" + totalMinutesRest.toString();
+        var time = new Date.now();
+        time.setHours(totalFullHours);
+        time.setMinutes(totalMinutesRest)
+        return time.toString("HH:mm");
     }
 
     for (var i = 0; i < elementsHoursWorked.length; i++) {

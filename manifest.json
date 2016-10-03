@@ -3,7 +3,7 @@
 
   "name": "Zodiac work time helper",
   "description": "This extension shows time when you should go home.",
-  "version": "0.2",
+  "version": "0.2.1",
   "icons": { "64": "logo.png" },
   "content_scripts": [
     {
